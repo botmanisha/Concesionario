@@ -117,14 +117,14 @@
         <h2> ALQUILERES</h2>
     <nav class="nav">
         <ul>
-            <li> <a href='../../Index.html'> Inicio </a> </li>
+            <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../../Coches/Coches.php'> Coches </a>
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
 		<li> <a href='../Alquileres.php'> Alquileres </a>
             <ul>	
-				<li> <a href='../../Index.html'> Inicio </a>  </li>
+				<li> <a href='../../Index.php'> Inicio </a>  </li>
 				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
 				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>

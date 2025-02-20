@@ -9,27 +9,26 @@
 <div class="container">
 
 	<?php
+	$conn= mysqli_connect("localhost","root","rootroot","concesionario");
 
-	include 'conn.php';
-
-	$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-	// Check connection
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	
-		
-	$name = $_POST['name'];
+	$name = $_POST['username'];
 	$email = $_POST['email'];
 	$pass = $_POST['password'];
+	$nombre = $_POST['nombre'];
+	$apellidos = $_POST['apellidos'];
+	$dni = $_POST['dni'];
+	$saldo = $_POST['saldo'];
+	$tipo = $_POST['tipo'];
 	
-	
-	$query = "INSERT INTO users (Name, Email, Password) VALUES ('$name', '$email', '$pass')";
+	$query = "INSERT INTO usuarios (username, Email, Password,nombre,apellidos,dni,saldo,tipo_usuario) VALUES ('$name', '$email', '$pass','$nombre', '$apellidos', '$dni','$saldo', '$tipo')";
 
 	if (mysqli_query($conn, $query)) {
 		echo "<div><h3>La cuenta sido creada.</h3>
-		<a href='login.html' >Login</a></div>";		
+		<a href='./Check-Login.html'>Login</a></div>";		
 		} else {
 			echo "Error: " . $query . "<br>" . mysqli_error($conn);
 		}		

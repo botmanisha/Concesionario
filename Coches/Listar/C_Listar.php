@@ -116,7 +116,7 @@
         <h2> COCHES</h2>
     <nav class="nav">
         <ul>
-        <li> <a href='../../Index.html'> Inicio </a> </li>
+        <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../Coches.php'> Coches </a>
                 <ul>	
                     <li> <a href='../Añadir/C_Añadir.html'> Añadir </a>  </li>

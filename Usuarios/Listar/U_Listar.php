@@ -116,12 +116,12 @@
         <h2> USUARIOS</h2>
     <nav class="nav">
         <ul>
-        <li> <a href='../../Index.html'> Inicio </a> </li>
+        <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../../Coches/Coches.php'> Coches </a>
         </li>
 		<li> <a href='../Usuarios.php'> Usuarios </a>
             <ul>	
-            <li> <a href='../../Index.html'> Inicio </a>  </li>
+            <li> <a href='../../Index.php'> Inicio </a>  </li>
 				<li> <a href='../Añadir/U_Añadir.html'> Añadir </a>  </li>
 				<li> <a href='../Listar/U_Listar.php'> Listar </a>  </li>
 				<li> <a href='../Buscar/U_Buscar.html'> Buscar </a>  </li>

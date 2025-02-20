@@ -34,16 +34,17 @@ session_start();
 	
 	if ($_POST['password']== $hash) {	
 		$_SESSION['loggedin'] = true;
-		$_SESSION['name'] = $row['Name'];
+		$_SESSION['username'] = $row['username'];
 		$_SESSION['start'] = time();
 		$_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;						
 		
-		echo "<strong>Bienvenido!</strong> $row[Name] <p><a href='edit-profile.php'>Editar Ficha</a></p>	
-		<p><a href='logout.php'>Logout</a></p></div>";	
+		header('Location: ../Index.php'); 
+		//echo "<strong>Bienvenido!</strong> $row[Name] <p><a href='edit-profile.php'>Editar Ficha</a></p>	
+		//<p><a href='logout.php'>Logout</a></p></div>";	
 	
 	} else {
 		echo "<div >Email o Password incorrectos!
-		<p><a href='login.html'><strong>¡Intentalo de nuevo!</strong></a></p></div>";			
+		<p><a href='Registrer.html'><strong>¡Intentalo de nuevo!</strong></a></p></div>";			
 	}	
 ?>
 </div>
