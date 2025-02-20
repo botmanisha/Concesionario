@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -203,20 +206,22 @@ label{
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> ALQUILERES</h2>
+        <h2> COCHES </h2>
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../../Coches/Coches.php'> Coches </a>
+            <ul>	
+                    <li> <a href='../Añadir/CF_Añadir.php'> Añadir </a>  </li>
+                    <li> <a href='../Listar/C_Listar.php'> Listar </a>  </li>
+                    <li> <a href='../Buscar/CF_Buscar.php'> Buscar </a>  </li>
+                    <li> <a href='../Modificar/CF_Modificar.php'> Modificar </a></li>
+                    <li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
+                </ul>
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
 		<li> <a href='../Alquileres.php'> Alquileres </a>
-            <ul>	
-				<li> <a href='../../Index.php'> Inicio </a>  </li>
-				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
-			</ul>
 		</li>
 	</ul>
     </nav><br>
@@ -270,7 +275,7 @@ if (mysqli_num_rows($result) == 1){
 </html>
 <?php
 } else {
-    echo "No se encontró la noticia.";
+    echo "No se encontró el coche solicitado.";
 }
 // Cerrar la conexión
 mysqli_close($conn);

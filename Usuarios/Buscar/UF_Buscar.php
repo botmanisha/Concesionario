@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$conn= mysqli_connect("localhost","root","rootroot","concesionario");
+
+if (!$conn){
+	die ("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,13 +190,15 @@ label{
             <li> <a href='../../Coches/Coches.php'> Coches </a>
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
+        <ul>	
+				<li> <a href='../Añadir/UF_Añadir.php'> Añadir </a>  </li>
+				<li> <a href='../Listar/U_Listar.php'> Listar </a>  </li>
+				<li> <a href='../Buscar/UF_Buscar.php'> Buscar </a>  </li>
+				<li> <a href='../Modificar/UF_Modificar.php'> Modificar </a>  </li>
+				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
+			</ul>	
 		</li>
 		<li> <a href='../Alquileres.php'> Alquileres </a>
-            <ul>	
-				<li> <a href='../../Index.php'> Inicio </a>  </li>
-				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
-			</ul>
 		</li>
 	</ul>
     </nav><br>

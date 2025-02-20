@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -134,18 +137,18 @@
     <div class="main-content">
             <h3>Listado de Alquileres</h3>
         </div>
-    <?PHP
+    <?php
 
-    // Conectar con el servidor de base de datos
-       $conexion = mysqli_connect ("localhost", "root", "rootroot")
-          or die ("No se puede conectar con el servidor");
-          
+    $conn= mysqli_connect("localhost","root","rootroot","concesionario");
+    if (!$conn){
+        die ("Connection failed: " . mysqli_connect_error());
+    }
     // Seleccionar base de datos
-       mysqli_select_db ($conexion,"concesionario")
+       mysqli_select_db ($conn,"concesionario")
           or die ("No se puede seleccionar la base de datos");
     // Enviar consulta
        $instruccion = "select * from Alquileres";
-       $consulta = mysqli_query ($conexion,$instruccion)
+       $consulta = mysqli_query ($conn,$instruccion)
           or die ("Fallo en la consulta");
     // Mostrar resultados de la consulta
        $nfilas = mysqli_num_rows ($consulta);
@@ -181,7 +184,7 @@
           print ("No hay alquileres disponibles");
  
  // Cerrar 
- mysqli_close ($conexion);
+ mysqli_close ($conn);
  
  ?>
  

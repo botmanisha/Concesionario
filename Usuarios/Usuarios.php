@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$conn= mysqli_connect("localhost","root","rootroot","concesionario");
+
+if (!$conn){
+	die ("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -120,7 +129,6 @@
         </li>
 		<li> <a href='Usuarios.php'> Usuarios </a>
             <ul>	
-				<li> <a href='../Index.php'> Inicio </a>  </li>
 				<li> <a href='./Añadir/UF_Añadir.php'> Añadir </a>  </li>
 				<li> <a href='./Listar/U_Listar.php'> Listar </a>  </li>
 				<li> <a href='./Buscar/UF_Buscar.php'> Buscar </a>  </li>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$conn= mysqli_connect("localhost","root","rootroot","concesionario");
+
+if (!$conn){
+	die ("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -112,7 +121,7 @@
             }
     </style>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> COCHES</h2>
+        <?php  if(isset($_SESSION["loggedin"])){echo '<h2>COCHES '. $_SESSION['username'] .' </h2> ';}?>
     <nav class="nav">
         <ul>
             <li> <a href='../Index.php'> Inicio </a> </li>
@@ -125,10 +134,8 @@
                     <li> <a href='./Borrar/F_Borrar.php'> Borrar </a>  </li>
                 </ul>
             </li>
-		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		
-		</li>
-		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a>
-		</li>
+		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		</li>
+		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a></li>
 	</ul></nav><br>
 
 

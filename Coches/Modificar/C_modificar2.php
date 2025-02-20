@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,7 +118,7 @@ body {
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> ALQUILERES</h2>
+        <h2>  COCHES </h2>
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>

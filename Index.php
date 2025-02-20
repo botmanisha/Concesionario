@@ -1,7 +1,13 @@
 <?php 
 session_start();
-if (!isset($session['tipo'])){
-    $_SESSION['tipo'] = 'invitado';
+$conn= mysqli_connect("localhost","root","rootroot","concesionario");
+
+if (!$conn){
+	die ("Connection failed: " . mysqli_connect_error());
+}
+
+if (!isset($_SESSION['tipo'])){
+    $_SESSION['tipo'] = '';
 }
 ?>
 <!DOCTYPE html>
@@ -188,7 +194,7 @@ footer .footer-banner h5 {
 				<li> <a href='./Alquileres/Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>
 		</li>
-		<li>  <a href="Log/Registrer.html"><img  class="loginn" src="Imagenes/iconlog.png"></a>
+		<li>  <a href="Log/Registrer.html"><img  class="loginn" src="Imagenes/login.png"></a>
 			<ul>	
 				<li> <a href='Index.php'> Inicio </a>  </li>
 				<li> <a href='./Log/Check-Login.html'> Log In </a>  </li>
@@ -196,7 +202,8 @@ footer .footer-banner h5 {
                 <li> <a href='./Log/Logout.php'> Cerrar Sesión </a>  </li>
 			</ul>
 		</li>
-
+		<li>  <a href='./Log/Logout.php'> </a><img  class="loginn" src="Imagenes/logout.png"></a>
+		</li>
 	</ul>	
 </nav>
 <div class="main-content">
