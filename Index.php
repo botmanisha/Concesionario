@@ -145,10 +145,9 @@ footer .footer-banner h5 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 .loginn {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
-    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+  
 }
 </style>
 	
@@ -156,7 +155,6 @@ footer .footer-banner h5 {
 	<div class="banner">	
 		<header>
             <h1> CONCESIONARIO </h1>
-            <a href="Log/Registrer.html"><img  class="loginn" src="Imagenes/LOGin.png"></a>
         </header>	
         
 	</div>
@@ -166,30 +164,39 @@ footer .footer-banner h5 {
 		<li> <a href='./Coches/Coches.php' > Coches </a>
 			<ul>	
 				<li> <a href='Index.php'> Inicio </a>  </li>
-				<li> <a href='./Coches/Añadir/C_Añadir.html'> Añadir </a>  </li>
+				<li> <a href='./Coches/Añadir/CF_Añadir.php'> Añadir </a>  </li>
 				<li> <a href='./Coches/Listar/C_Listar.php'> Listar </a>  </li>
-				<li> <a href='./Coches/Buscar/C_Buscar.html'> Buscar </a>  </li>
-				<li> <a href='./Coches/Modificar/C_Modificar.html'> Modificar</a></li>
+				<li> <a href='./Coches/Buscar/CF_Buscar.php'> Buscar </a>  </li>
+				<li> <a href='./Coches/Modificar/CF_Modificar.php'> Modificar</a></li>
 				<li> <a href='./Coches/Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>
 		</li>
 		<li> <a href='./Usuarios/Usuarios.php' > Usuarios </a> 
 			<ul>	
 				<li> <a href='Index.php'> Inicio </a>  </li>
-				<li> <a href='./Usuarios/Añadir/U_Añadir.html'> Añadir </a>  </li>
+				<li> <a href='./Usuarios/Añadir/UF_Añadir.php'> Añadir </a>  </li>
 				<li> <a href='./Usuarios/Listar/U_Listar.php'> Listar </a>  </li>
-				<li> <a href='./Usuarios/Buscar/U_Buscar.html'> Buscar </a>  </li>
-				<li> <a href='./Usuarios/Modificar/U_Modificar.html'> Modificar </a>  </li>
+				<li> <a href='./Usuarios/Buscar/UF_Buscar.php'> Buscar </a>  </li>
+				<li> <a href='./Usuarios/Modificar/UF_Modificar.php'> Modificar </a>  </li>
 				<li> <a href='./Usuarios/Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>		
 		</li>
-		<li> <a href='./Alquileres/Alquileres.php' > Alquileres </a>
+        <li> <a href='./Alquileres/Alquileres.php' > Alquileres </a>
 			<ul>	
 				<li> <a href='Index.php'> Inicio </a>  </li>
 				<li> <a href='./Alquileres/Listar/A_Listar.php'> Listar </a>  </li>
 				<li> <a href='./Alquileres/Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>
 		</li>
+		<li>  <a href="Log/Registrer.html"><img  class="loginn" src="Imagenes/iconlog.png"></a>
+			<ul>	
+				<li> <a href='Index.php'> Inicio </a>  </li>
+				<li> <a href='./Log/Check-Login.html'> Log In </a>  </li>
+				<li> <a href='./Log/Registrer.html'> Registrarse </a>  </li>
+                <li> <a href='./Log/Logout.php'> Cerrar Sesión </a>  </li>
+			</ul>
+		</li>
+
 	</ul>	
 </nav>
 <div class="main-content">

@@ -25,6 +25,7 @@ if (mysqli_num_rows($result) > 0){
 	echo "</br>";
 	echo "<button type='submit'> Eliminar Seleccionados </button>";
 	echo "</form>";	
+	echo "<a href='../../Index.php'>Volver a Inicio.</a>";
 } else {
 	echo "<h1> No hay alquileres disponibles. </h1>";
 } 

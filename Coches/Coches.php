@@ -118,16 +118,16 @@
             <li> <a href='../Index.php'> Inicio </a> </li>
             <li> <a href='Coches.php'> Coches </a>
                 <ul>	
-                    <li> <a href='./Añadir/C_Añadir.html'> Añadir </a>  </li>
+                    <li> <a href='./Añadir/CF_Añadir.php'> Añadir </a>  </li>
                     <li> <a href='./Listar/C_Listar.php'> Listar </a>  </li>
-                    <li> <a href='./Buscar/C_Buscar.html'> Buscar </a>  </li>
-                    <li> <a href='./Modificar/C_Modificar.html'> Modificar </a></li>
+                    <li> <a href='./Buscar/CF_Buscar.php'> Buscar </a>  </li>
+                    <li> <a href='./Modificar/CF_Modificar.php'> Modificar </a></li>
                     <li> <a href='./Borrar/F_Borrar.php'> Borrar </a>  </li>
                 </ul>
             </li>
-		<li> <a href='../Usuarios/Usuarios.php' target="_blank"> Usuarios </a> 		
+		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		
 		</li>
-		<li> <a href='../Alquileres/Alquileres.php' target="_blank"> Alquileres </a>
+		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul></nav><br>
 
