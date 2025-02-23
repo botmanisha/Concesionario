@@ -198,13 +198,13 @@ label{
 				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul>
     </nav><br>
-</style>
     <div class="main-content">
         <div class="form-container">
+        <h3>Buscar un usuario</h3>
     <form action="u_buscar.php" method="post">
        <input type="text" name="buscador" placeholder="Buscar"> <BR> <BR>
         <input type="submit" value="Buscar">

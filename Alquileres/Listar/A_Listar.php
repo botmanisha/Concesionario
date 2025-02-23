@@ -85,7 +85,7 @@ session_start();
                 width: 80%;
                 margin: 20px auto;
                 border-collapse: collapse;
-                border: 2px solidrgb(60, 36, 65);
+                border: 1px solid #ddd;
                 text-align: center;
             }
             th, td {
@@ -134,9 +134,7 @@ session_start();
 		</li>
 	</ul>
     </nav><br>
-    <div class="main-content">
-            <h3>Listado de Alquileres</h3>
-        </div>
+
     <?php
 
     $conn= mysqli_connect("localhost","root","rootroot","concesionario");
@@ -152,8 +150,8 @@ session_start();
           or die ("Fallo en la consulta");
     // Mostrar resultados de la consulta
        $nfilas = mysqli_num_rows ($consulta);
-       if ($nfilas > 0)
-       {
+       if ($nfilas > 0) {   
+          echo " <div class='main-content'> <h3>Listado de alquileres</h3>";
           print ("<TABLE border=1 >\n");
           print ("<TR>\n");
           print ("<TH height=50px width=100>ID Alquiler</TH>\n");
@@ -181,7 +179,7 @@ session_start();
           print ("</TABLE>\n");
        }
        else
-          print ("No hay alquileres disponibles");
+       echo "<h1> No hay Alquileres disponibles. </h1></div>";
  
  // Cerrar 
  mysqli_close ($conn);

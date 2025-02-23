@@ -121,7 +121,7 @@ if (!$conn){
             }
     </style>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> COCHES</h2>
+        <h2> USUARIOS </h2>
     <nav class="nav">
         <ul>
         <li> <a href='../Index.php'> Inicio </a> </li>

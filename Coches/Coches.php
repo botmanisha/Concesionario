@@ -121,6 +121,7 @@ if (!$conn){
             }
     </style>
     <header><h1>CONCESIONARIO</h1></header>
+    <h2> COCHES </h2>
         <?php  if(isset($_SESSION["loggedin"])){echo '<h2>COCHES '. $_SESSION['username'] .' </h2> ';}?>
     <nav class="nav">
         <ul>

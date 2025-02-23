@@ -177,7 +177,7 @@ label{
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
-    <h2> BUSQUEDA DE USUARIOS</h2>
+    <h2> ELIMINACIÓN DE USUARIOS</h2>
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
@@ -192,13 +192,11 @@ label{
 				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul>
     </nav><br>
 </style>
-    <div class="main-content">
-        <div class="form-container"></div>
 <?php
 $conn= mysqli_connect("localhost","root","rootroot","concesionario");
 if (!$conn){
@@ -207,7 +205,7 @@ if (!$conn){
 $sql = "select * from Usuarios";
 $result = mysqli_query($conn,$sql);
 if (mysqli_num_rows($result) > 0){
-	echo "<h1>Listado de usuarios</h1>";
+	echo " <div class='main-content'> <h3>Listado de usuarios</h3>";
 	echo "<form action='U_Borrar.php' method='post'>";
 	echo "<table border='1'>";
 	echo"<tr><th> Seleccionar </th><th> ID Usuario </th><th> Paassword </th><th> Nombre </th><th> Apellidos </th><th> DNI </th><th> Saldo </th></tr>";
@@ -225,10 +223,10 @@ if (mysqli_num_rows($result) > 0){
 	}
 	echo "</table>";
 	echo "</br>";
-	echo "<button type='submit'> Eliminar Seleccionados </button>";
+	echo "<button type='submit' align='center'> Eliminar Seleccionados </button>";
 	echo "</form>";	
 } else {
-	echo "<h1> No hay usuarios disponibles. </h1>";
+	echo "<h1> No hay usuarios disponibles. </h1></div>";
 } 
 //Cerrar conexion
 mysqli_close($conn);

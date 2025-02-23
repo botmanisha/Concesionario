@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MODIFICACIÓN DE COCHES</title>
 </head>
 <style>  
 body {
@@ -126,7 +126,7 @@ body {
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
             <ul>	
 				<li> <a href='../../Index.php'> Inicio </a>  </li>
 				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>

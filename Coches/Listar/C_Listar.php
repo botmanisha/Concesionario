@@ -84,7 +84,7 @@ session_start();
                 width: 80%;
                 margin: 20px auto;
                 border-collapse: collapse;
-                border: 2px solidrgb(60, 36, 65);
+                border: 1px solid #ddd;
                 text-align: center;
             }
             th, td {

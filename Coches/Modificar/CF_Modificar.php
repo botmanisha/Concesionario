@@ -12,7 +12,7 @@ if (!$conn){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MODIFICACIÓN DE COCHES</title>
 </head>
 <style>  
 body {
@@ -121,6 +121,69 @@ body {
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 text-align: center;
             }
+            .main-content h3 {
+    color: #412B6A;
+    font-size: 2rem;
+}
+.form-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto;
+    text-align: center; 
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.form-container label {
+    display: block;
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
+}
+.form-container input, .form-container select {
+    width: 60%;
+    padding: 8px;
+    margin: auto 0;
+    text-align: center;
+    align-items: center;
+    border: 3px solid #e5d5e7;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    
+
+}
+.form-container input[type="file"] {
+    padding: 5px;
+}
+.form-container input[type="submit"] {
+    background-color: #412B6A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 30px;
+}
+.form-container input[type="submit"]:hover {
+    background-color: #C190CB;
+}
+footer {
+    background-color: #412B6A;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+label{
+    text-align: center;
+    font-style: italic;
+    font-family: Arial, sans-serif;
+    color: darkblue;
+    font-size: 10px;
+
+}
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
@@ -139,7 +202,7 @@ body {
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
             <ul>	
 				<li> <a href='../../Index.php'> Inicio </a>  </li>
 				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
@@ -148,10 +211,13 @@ body {
 		</li>
 	</ul>
     </nav><br>
-	<form action='C_modificar1.php' method='post' >
-		<label for='id_coche'>Modificación mediante ID Coche:</label>
-		<input type='text' name='id_coche' required><br>
-		<input type='submit' value='Buscar'>
-	</form>
+    <div class="main-content">
+    <div class="form-container">
+        <h3>Modificación mediante ID Coche:</h3>
+	    <form action='C_modificar1.php' method='post' >
+		    <input type='text' name='id_coche' required><br>
+		    <input type='submit' value='Buscar'>
+	    </form>
+    </div></div>
 </body>
 </html>

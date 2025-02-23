@@ -6,9 +6,10 @@ if (!$conn){
 	die ("Connection failed: " . mysqli_connect_error());
 }
 
-if (!isset($_SESSION['tipo'])){
+if (!isset($_SESSION['tipo'])){  
     $_SESSION['tipo'] = '';
 }
+$tipo =  $_SESSION['tipo'] ;
 ?>
 <!DOCTYPE html>
 <html lang='es'>
@@ -153,7 +154,6 @@ footer .footer-banner h5 {
 .loginn {
     width: 20px;
     height: 20px;
-  
 }
 </style>
 	
@@ -170,7 +170,8 @@ footer .footer-banner h5 {
 		<li> <a href='./Coches/Coches.php' > Coches </a>
 			<ul>	
 				<li> <a href='Index.php'> Inicio </a>  </li>
-				<li> <a href='./Coches/Añadir/CF_Añadir.php'> Añadir </a>  </li>
+                <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+				echo "<li> <a href='./Coches/Añadir/CF_Añadir.php'> Añadir </a>  </li>";  } ?>
 				<li> <a href='./Coches/Listar/C_Listar.php'> Listar </a>  </li>
 				<li> <a href='./Coches/Buscar/CF_Buscar.php'> Buscar </a>  </li>
 				<li> <a href='./Coches/Modificar/CF_Modificar.php'> Modificar</a></li>
@@ -196,14 +197,15 @@ footer .footer-banner h5 {
 		</li>
 		<li>  <a href="Log/Registrer.html"><img  class="loginn" src="Imagenes/login.png"></a>
 			<ul>	
-				<li> <a href='Index.php'> Inicio </a>  </li>
 				<li> <a href='./Log/Check-Login.html'> Log In </a>  </li>
 				<li> <a href='./Log/Registrer.html'> Registrarse </a>  </li>
-                <li> <a href='./Log/Logout.php'> Cerrar Sesión </a>  </li>
 			</ul>
 		</li>
-		<li>  <a href='./Log/Logout.php'> </a><img  class="loginn" src="Imagenes/logout.png"></a>
-		</li>
+		<li>  <a href='Log/Logout.php'> <img  class="loginn" src="Imagenes/logout.png"></a>
+        <ul>
+        <li> <a href='./Log/Logout.php'> Cerrar Sesión </a>  </li>
+        </ul>
+    </li>
 	</ul>	
 </nav>
 <div class="main-content">

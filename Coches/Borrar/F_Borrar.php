@@ -6,10 +6,10 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BORRAR COCHES</title>
 </head>
 <style>  
-body {
+   body {
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
@@ -86,7 +86,7 @@ body {
                 width: 80%;
                 margin: 20px auto;
                 border-collapse: collapse;
-                border: 2px solidrgb(60, 36, 65);
+                border: 1px solid #ddd;
                 text-align: center;
             }
             th, td {
@@ -133,7 +133,7 @@ body {
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul>
     </nav><br>
@@ -146,7 +146,7 @@ if (!$conn){
 $sql = "select * from coches";
 $result = mysqli_query($conn,$sql);
 if (mysqli_num_rows($result) > 0){
-	echo "<h1>Listado de coches</h1>";
+	echo " <div class='main-content'> <h3>Listado de coches</h3>";
 	echo "<form action='C_Borrar.php' method='post'>";
 	echo "<table border='1'>";
 	echo"<tr><th> Seleccionar </th><th> ID Coche </th><th> Modelo </th><th> Marca </th><th> Color </th><th> Precio </th><th> Alquilado </th><th> Foto </th></tr>";
@@ -174,7 +174,7 @@ if (mysqli_num_rows($result) > 0){
 	echo "<button type='submit'> Eliminar Coches </button>";
 	echo "</form>";	
 } else {
-	echo "<h1> No hay Coches disponibles. </h1>";
+	echo "<h1> No hay Coches disponibles. </h1></div>";
 } 
 //Cerrar conexion
 mysqli_close($conn);

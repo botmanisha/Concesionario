@@ -12,7 +12,7 @@ if (!$conn){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BUSCAR COCHES</title>
 </head>
 <style>  
 body {
@@ -202,7 +202,7 @@ label{
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul>
     </nav><br>

@@ -187,7 +187,7 @@ label{
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> BUSQUEDA DE COCHES</h2>
+        <h2> AÑADIR UN USUARIO</h2>
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
@@ -202,7 +202,7 @@ label{
 				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
 			</ul>	
 		</li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
 		</li>
 	</ul>
     </nav><br>
