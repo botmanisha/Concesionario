@@ -1,124 +1,13 @@
 <?php
 session_start();
-
+$tipo = $_SESSION['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <title>LISTADO DE ALQUILERES</title>
+        <link rel="stylesheet" href="../../Estilos.css">
     </head>
-    <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-                color: #333;
-            }
-            header {
-                background-color: #412B6A;
-                color: white;
-                padding: 20px 0;
-                text-align: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            header h1 {
-                margin: 0;
-                font-size: 2.5rem;
-            }
-            .nav {
-                display: flex;
-                justify-content: center;
-                background-color: #412B6A;
-                margin: 0;
-                padding: 0;
-            }
-            .nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-            }
-            .nav li {
-                position: relative;
-            }
-            .nav li a {
-                text-decoration: none;
-                padding: 15px 20px;
-                color: white;
-                display: block;
-                transition: background-color 0.3s, color 0.3s;
-            }
-            .nav li a:hover {
-                background-color: #C190CB;
-                color: #fff;
-            }
-            .nav li ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                display: none;
-                background-color: #412B6A;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            .nav li:hover > ul {
-                display: block;
-            }
-            .nav li ul li a {
-                padding: 10px 15px;
-            }
-            .main-content {
-                padding: 20px;
-                text-align: center;
-            }
-            .main-content h3 {
-                color: #412B6A;
-            }
-            footer {
-                background-color: #412B6A;
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-                margin-top: 20px;
-            }
-            table {
-                width: 80%;
-                margin: 20px auto;
-                border-collapse: collapse;
-                border: 1px solid #ddd;
-                text-align: center;
-            }
-            th, td {
-                padding: 10px;
-                border: 1px solid #ddd;
-            }
-            th {
-                background-color: #412B6A;
-                color: white;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            .contenedor {
-                width: 80%;
-                display: flex;
-                justify-content: space-between;
-                margin: 100px auto;
-            }
-            h2 {
-                color: rgb(209, 105, 105);
-                text-align: center;
-            }
-            h5 {
-                color: rgb(209, 105, 105);
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                text-align: center;
-            }
-            .loginn {
-                width: 20px;
-                height: 20px;
-            }
-    </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
         <h2> ALQUILERES</h2>
@@ -131,8 +20,10 @@ session_start();
 		<li> <a href='../Alquileres.php'> Alquileres </a> ";  } ?>
             <ul>	
 			 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
-				echo "<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
+				echo "<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>";  } ?>
+
+            <?php if ( $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo "<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
 			</ul>
 		</li>
         <li>  <a href="../../Log/F_Registrer.php"><img  class="loginn" src="../../Imagenes/login.png"></a>
@@ -162,10 +53,24 @@ session_start();
        $instruccion = "select * from Alquileres";
        $consulta = mysqli_query ($conn,$instruccion)
           or die ("Fallo en la consulta");
-    // Mostrar resultados de la consulta
+    $id_usuario = $_SESSION['iduser'];
+    if ($tipo == 'Comprador'){
+         $con = "SELECT * FROM Alquileres WHERE id_usuario = '$id_usuario'";
+         $consulta = mysqli_query ($conn,$con);
+    }
+    elseif ($tipo == 'Vendedor'){
+        // $con = "select id_alquiler,id_usuario,id_coche,prestado,devuelto  from alquileres a join usuarios u on a.id_usuario=u.id_usuario join coches c on a.id_coche=c.id_coche join usuarios v on c.Vendedor=v.id_usuario where Vendedor ='$id_usuario'";
+       $con = " SELECT a.id_alquiler, a.id_usuario, c.id_coche, c.modelo, c.marca, a.prestado, a.devuelto FROM alquileres a JOIN coches c ON a.id_coche = c.id_coche WHERE c.Vendedor ='$id_usuario'";
+ 
+        $consulta = mysqli_query ($conn,$con);
+    } else {
+        $con = "SELECT * FROM Alquileres";
+        $consulta = mysqli_query ($conn,$con); 
+    }
+
        $nfilas = mysqli_num_rows ($consulta);
        if ($nfilas > 0) {   
-          echo " <div class='main-content'> <h3>Listado de alquileres</h3>";
+          echo " <div class='main-content'><div class='form-container'> <h3>Listado de alquileres</h3>";
           print ("<TABLE border=1 >\n");
           print ("<TR>\n");
           print ("<TH height=50px width=100>ID Alquiler</TH>\n");
@@ -193,7 +98,7 @@ session_start();
           print ("</TABLE>\n");
        }
        else
-       echo "<h1> No hay Alquileres disponibles. </h1></div>";
+       echo "<h1> No hay Alquileres disponibles. </h1></div></div>";
  
  // Cerrar 
  mysqli_close ($conn);

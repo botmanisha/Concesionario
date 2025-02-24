@@ -16,147 +16,10 @@ $tipo =  $_SESSION['tipo'] ;
 <head>
 	<meta charset='UTF-8'>
 	<title> Menu Concesionario </title>
+    <link rel="stylesheet" href="./Index.css">
 </head>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
 
-header {
-    background-color: #412B6A;
-    color: white;
-    padding: 15px 0;  /* Reducido el padding */
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.nav {
-    display: flex;
-    justify-content: center;
-    background-color: #412B6A;
-    margin: 0;
-    padding: 0;
-}
-
-.nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.nav li {
-    position: relative;
-}
-
-.nav li a {
-    text-decoration: none;
-    padding: 15px 20px;
-    color: white;
-    display: block;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.nav li a:hover {
-    background-color: #C190CB;
-    color: #fff;
-}
-
-.nav li ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    background-color: #412B6A;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nav li:hover > ul {
-    display: block;
-}
-
-.nav li ul li a {
-    padding: 10px 15px;
-}
-
-.main-content {
-    padding: 20px; /* Reducido padding */
-    text-align: center;
-}
-
-.main-content h3 {
-    color: #412B6A;
-}
-
-.mapita {
-    margin-left: 20px;
-    width: 400px;
-    height: 700px;
-    color: rgb(209, 105, 105);
-    text-transform: uppercase;
-    align-items: left;
-}
-
-.contacto {
-    align-items: right;
-    width: 700px;
-    margin-right: 100px;
-}
-
-.contenedor {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin: 50px auto; /* Reducido margen */
-}
-
-h3 {
-    color: rgb(209, 105, 105);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-
-#map-9cd199b9cc5410cd3b1ad21cab2e54d3 {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px;
-}
-
-h5 {
-    color: rgb(209, 105, 105);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-
-footer {
-    background-image: url('Imagenes/fxk4.gif');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 20px 0; /* Reducido padding */
-    margin-top: 40px; /* Reducido margen */
-}
-
-footer .footer-banner h5 {
-    font-size: 1.5rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-.loginn {
-    width: 20px;
-    height: 20px;
-}
-</style>
-	
 <body>
 	<div class="banner">	
 		<header>
@@ -194,8 +57,9 @@ footer .footer-banner h5 {
             echo "<a href='./Alquileres/Alquileres.php' > Alquileres </a>";  } ?>
 			<ul>	
 			 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
-				echo "<li> <a href='./Alquileres/Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='./Alquileres/Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
+				echo "<li> <a href='./Alquileres/Listar/A_Listar.php'> Listar </a>  </li>";  } ?>
+				<?php if ( $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo "<li> <a href='./Alquileres/Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
 			</ul>
 		</li>
 		<li>  <a href="Log/F_Registrer.php"><img  class="loginn" src="Imagenes/login.png"></a>

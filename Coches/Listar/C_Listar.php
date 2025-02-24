@@ -1,123 +1,13 @@
 <?php
 session_start();
+$tipo = $_SESSION['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <title>LISTADO DE COCHES</title>
+        <link rel="stylesheet" href="../../Estilos.css">
     </head>
-    <style>
-   body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-                color: #333;
-            }
-            header {
-                background-color: #412B6A;
-                color: white;
-                padding: 20px 0;
-                text-align: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            header h1 {
-                margin: 0;
-                font-size: 2.5rem;
-            }
-            .nav {
-                display: flex;
-                justify-content: center;
-                background-color: #412B6A;
-                margin: 0;
-                padding: 0;
-            }
-            .nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-            }
-            .nav li {
-                position: relative;
-            }
-            .nav li a {
-                text-decoration: none;
-                padding: 15px 20px;
-                color: white;
-                display: block;
-                transition: background-color 0.3s, color 0.3s;
-            }
-            .nav li a:hover {
-                background-color: #C190CB;
-                color: #fff;
-            }
-            .nav li ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                display: none;
-                background-color: #412B6A;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            .nav li:hover > ul {
-                display: block;
-            }
-            .nav li ul li a {
-                padding: 10px 15px;
-            }
-            .main-content {
-                padding: 20px;
-                text-align: center;
-            }
-            .main-content h3 {
-                color: #412B6A;
-            }
-            footer {
-                background-color: #412B6A;
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-                margin-top: 20px;
-            }
-            table {
-                width: 80%;
-                margin: 20px auto;
-                border-collapse: collapse;
-                border: 1px solid #ddd;
-                text-align: center;
-            }
-            th, td {
-                padding: 10px;
-                border: 1px solid #ddd;
-            }
-            th {
-                background-color: #412B6A;
-                color: white;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            .contenedor {
-                width: 80%;
-                display: flex;
-                justify-content: space-between;
-                margin: 100px auto;
-            }
-            h2 {
-                color: rgb(209, 105, 105);
-                text-align: center;
-            }
-            h5 {
-                color: rgb(209, 105, 105);
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                text-align: center;
-            }
-            .loginn {
-                width: 20px;
-                height: 20px;
-            }
-    </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
         <h2> COCHES</h2>
@@ -152,7 +42,8 @@ session_start();
     </nav><br>
     <div class="main-content">
             <h3>Listado de Coches</h3>
-        </div>
+            <div class='form-container '>
+
     <?PHP
 
    // Conectar con el servidor de base de datos
@@ -177,8 +68,9 @@ session_start();
          print ("<TH>Marca</TH>\n");
          print ("<TH>Color</TH>\n");
          print ("<TH>Precio</TH>\n");
-         print ("<TH>Alquilado</TH>\n");
          print ("<TH>Foto</TH>\n");
+         print ("<TH>Alquilado</TH>\n");
+         if  ($tipo == 'Comprador') {print ("<TH>Rerservar</TH>\n");}
          print ("</TR>\n");
 
          for ($i=0; $i<$nfilas; $i++)
@@ -196,9 +88,20 @@ session_start();
             print ("<TD>" . $resultado['marca'] . "</TD>\n");
             print ("<TD>" . $resultado['color'] . "</TD>\n");
             print ("<TD>" . $resultado['precio'] . "</TD>\n");
-            print ("<TD>" . $boo . "</TD>\n");
             print ("<TD> <img src='../Añadir/Fotos/" . $resultado['foto'] ."' width=100 heigh=100></TD>\n");      
-          
+            print ("<TD>" . $boo . "</TD>\n");
+            if  ($tipo == 'Comprador') { 
+                if ($boo == 'No'){
+                   echo " <TD> <form action='Alquiler.php' METHOD='POST'>
+                        <input type='hidden' name='coche' value= ". $resultado['id_coche'] . ">             
+                        <button type='submit'>Modificar</button>
+                    </form> </td> ";
+                }
+                else {
+                    echo "<TD> Reserva completada </td>";
+                }
+                
+            }
             print ("</TR>\n");
          }
 
@@ -211,6 +114,6 @@ session_start();
 mysqli_close ($conexion);
 
 ?>
-
+</div>
     </body>
 </html>

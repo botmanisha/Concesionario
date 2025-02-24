@@ -6,6 +6,7 @@ $conn= mysqli_connect("localhost","root","rootroot","concesionario");
 if (!$conn){
 	die ("Connection failed: " . mysqli_connect_error());
 }
+$tipo = $_SESSION['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,185 +14,11 @@ if (!$conn){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MODIFICACIÓN DE COCHES</title>
+    <link rel="stylesheet" href="../../Estilos.css">
 </head>
-<style>  
-body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-                color: #333;
-            }
-            header {
-                background-color: #412B6A;
-                color: white;
-                padding: 20px 0;
-                text-align: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            header h1 {
-                margin: 0;
-                font-size: 2.5rem;
-            }
-            .nav {
-                display: flex;
-                justify-content: center;
-                background-color: #412B6A;
-                margin: 0;
-                padding: 0;
-            }
-            .nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-            }
-            .nav li {
-                position: relative;
-            }
-            .nav li a {
-                text-decoration: none;
-                padding: 15px 20px;
-                color: white;
-                display: block;
-                transition: background-color 0.3s, color 0.3s;
-            }
-            .nav li a:hover {
-                background-color: #C190CB;
-                color: #fff;
-            }
-            .nav li ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                display: none;
-                background-color: #412B6A;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-            .nav li:hover > ul {
-                display: block;
-            }
-            .nav li ul li a {
-                padding: 10px 15px;
-            }
-            .main-content {
-                padding: 20px;
-                text-align: center;
-            }
-            .main-content h3 {
-                color: #412B6A;
-            }
-            footer {
-                background-color: #412B6A;
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-                margin-top: 20px;
-            }
-            table {
-                width: 80%;
-                margin: 20px auto;
-                border-collapse: collapse;
-                border: 2px solidrgb(60, 36, 65);
-                text-align: center;
-            }
-            th, td {
-                padding: 10px;
-                border: 1px solid #ddd;
-            }
-            th {
-                background-color: #412B6A;
-                color: white;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            .contenedor {
-                width: 80%;
-                display: flex;
-                justify-content: space-between;
-                margin: 100px auto;
-            }
-            h2 {
-                color: rgb(209, 105, 105);
-                text-align: center;
-            }
-            h5 {
-                color: rgb(209, 105, 105);
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                text-align: center;
-            }
-            .main-content h3 {
-                color: #412B6A;
-                font-size: 2rem;
-            }
-            .form-container {
-                width: 100%;
-                max-width: 850px;
-                margin: 30px auto;
-                text-align: center; 
-                padding: 10px;
-                background-color: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            }
-            .form-container label {
-                display: block;
-                font-size: 0.9rem;
-                margin: 10px 0 5px;
-            }
-            .form-container input, .form-container select {
-                width: 60%;
-                padding: 8px;
-                margin: auto 0;
-                text-align: center;
-                align-items: center;
-                border: 3px solid #e5d5e7;
-                border-radius: 5px;
-                font-size: 0.9rem;
-                
-
-            }
-            .form-container input[type="file"] {
-                padding: 5px;
-            }
-            .form-container input[type="submit"] {
-                background-color: #412B6A;
-                color: white;
-                border: none;
-                padding: 10px 15px;
-                font-size: 1rem;
-                cursor: pointer;
-                border-radius: 5px;
-                transition: background-color 0.3s;
-                margin: 30px;
-            }
-            .form-container input[type="submit"]:hover {
-                background-color: #C190CB;
-            }
-            footer {
-                background-color: #412B6A;
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-                margin-top: 40px;
-            }
-            label{
-                text-align: center;
-                font-style: italic;
-                font-family: Arial, sans-serif;
-                color: darkblue;
-                font-size: 10px;
-
-            }
-            .loginn {
-                width: 20px;
-                height: 20px;
-            }
-    </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
-        <h2> MODIFICACION DE COCHES POR ID</h2>
+        <h2>  COCHES </h2>
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
@@ -223,11 +50,77 @@ body {
     </nav><br>
     <div class="main-content">
     <div class="form-container">
-        <h3>Modificación mediante ID Coche:</h3>
-	    <form action='C_modificar1.php' method='post' >
-		    <input type='text' name='id_coche' required><br>
-		    <input type='submit' value='Buscar'>
-	    </form>
-    </div></div>
+        <h3>Modificación mediante ID:</h3>
+        <?PHP
+   
+   // Conectar con el servidor de base de datos
+      $conexion = mysqli_connect ("localhost", "root", "rootroot")
+         or die ("No se puede conectar con el servidor");
+         
+   // Seleccionar base de datos
+      mysqli_select_db ($conexion,"concesionario")
+         or die ("No se puede seleccionar la base de datos");
+   // Enviar consulta
+       $id_usuario = $_SESSION['iduser'];
+       if ($tipo =="Admin"){
+       $instruccion = "select * from coches";
+       }else {
+           $instruccion = "select * from coches where Vendedor = '$id_usuario'";
+       }
+      $consulta = mysqli_query ($conexion,$instruccion)
+         or die ("Fallo en la consulta");
+   // Mostrar resultados de la consulta
+      $nfilas = mysqli_num_rows ($consulta);
+      if ($nfilas > 0)
+      {
+        print ("<TABLE border=1>\n");
+        print ("<TR>\n");
+        print ("<TH>ID</TH>\n");
+        print ("<TH>Modelo</TH>\n");
+        print ("<TH>Marca</TH>\n");
+        print ("<TH>Color</TH>\n");
+        print ("<TH>Precio</TH>\n");
+        print ("<TH>Foto</TH>\n");
+        print ("<TH>Alquilado</TH>\n");
+        print ("<TH>Modificar</TH>\n");
+        print ("</TR>\n");
+
+         for ($i=0; $i<$nfilas; $i++)
+         {
+            $resultado = mysqli_fetch_array($consulta);
+            if ($resultado['alquilado'] == 0){
+                $boo = "No";
+             }
+             else{
+                 $boo = "Sí";
+             }
+            print ("<TR align=center>\n");            
+            print ("<TD>" . $resultado['id_coche'] . "</TD>\n");
+            print ("<TD>" . $resultado['modelo'] . "</TD>\n");
+            print ("<TD>" . $resultado['marca'] . "</TD>\n");
+            print ("<TD>" . $resultado['color'] . "</TD>\n");
+            print ("<TD>" . $resultado['precio'] . "</TD>\n");
+            print ("<TD> <img src='../Añadir/Fotos/" . $resultado['foto'] ."' width=100 heigh=100></TD>\n");      
+            print ("<TD>" . $boo . "</TD>\n");
+            print ("<TD height=50px width=100> 
+               <form action='./C_Modificar1.php' METHOD='POST'>
+                   <input type='hidden' name='vendedor' value= ". $resultado['Vendedor'] . ">             
+                   <button type='submit'>Modificar</button>
+                </form>  
+           </TD>\n");
+            
+            print ("</TR>\n");
+         }
+   
+         print ("</TABLE>\n");
+      }
+      else {
+         print ("No hay usuarios disponibles");
+      }
+   // Cerrar 
+   mysqli_close ($conexion);
+   
+   ?>
+</div>
 </body>
 </html>
