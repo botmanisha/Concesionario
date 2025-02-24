@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -103,10 +106,17 @@
   <body>
 	  <header><h1>CONCESIONARIO</h1></header>
 	  <nav class="nav">
-		  <ul>
-			  <li> <a href='../Index.php'> Inicio </a> </li>
-			  <li> <a href='../Coches/Coches.php'> Coches </a></li>
-		  </ul>
+		<ul>
+			<li> <a href='../Index.php'> Inicio </a> </li>
+			<li> <a href='../Coches/Coches.php'> Coches </a>
+                    <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+                    echo "<li> <a href='../Coches/Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
+                        <li> <a href='../Coches/Modificar/CF_Modificar.php'> Modificar </a>  </li>
+                        <li> <a href='../Coches/Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
+                        <li> <a href='../Coches/Listar/C_Listar.php'>        Listar    </a>  </li>
+                        <li> <a href='../Coches/Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
+			</li>
+		</ul>
 	  </nav>
 	  <div class="main-content">
 		<h3>Crear una cuenta</h3>
@@ -136,7 +146,7 @@
 		</form>		
 		
 			<h3>Log in</h3><hr />
-			<p>¿Tienes ya una cuenta? <a href="Check-Login.html" title="Login Here">Login Aquí!</a></p>
+			<p>¿Tienes ya una cuenta? <a href="CheckLogin.php" title="Login Here">Login Aquí!</a></p>
 	</div></div>
 	</body>
 </html>

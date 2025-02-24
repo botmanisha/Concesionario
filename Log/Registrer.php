@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +102,16 @@
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
-            <li> <a href='../../Coches/Coches.php'> Coches </a></li>
+            <li> <a href='../../Coches/Coches.php'> Coches </a>
+                <ul>	
+                    <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+                    echo "<li> <a href='../Coches/Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
+                        <li> <a href='../Coches/Modificar/CF_Modificar.php'> Modificar </a>  </li>
+                        <li> <a href='../Coches/Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
+                        <li> <a href='../Coches/Listar/C_Listar.php'>        Listar    </a>  </li>
+                        <li> <a href='../Coches/Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div class="main-content">
@@ -120,14 +132,14 @@
                 $apellidos = $_POST['apellidos'];
                 $dni = $_POST['dni'];
                 $saldo = $_POST['saldo'];
-                $tipo = $_POST['tipo'];
+                $tipo = $_POST['tipo_usuario'];
 
                 $query = "INSERT INTO usuarios (username, Email, Password, nombre, apellidos, dni, saldo, tipo_usuario) 
                           VALUES ('$name', '$email', '$pass', '$nombre', '$apellidos', '$dni', '$saldo', '$tipo')";
 
                 if (mysqli_query($conn, $query)) {
                     echo "<div><h3>La cuenta ha sido creada.</h3>
-                    <a href='./Check-Login.html'>Login</a></div>";        
+                    <a href='./CheckLogin.php'>Login</a></div>";        
                 } else {
                     echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 }

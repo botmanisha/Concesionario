@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -123,16 +122,15 @@ session_start();
             <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../../Coches/Coches.php'> Coches </a>
             </li>
-		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
-		</li>
+		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a></li>
 		<li> <a href='../Alquileres.php'> Alquileres </a>
-            <ul>	
-				<li> <a href='../../Index.php'> Inicio </a>  </li>
-				<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
+             <ul>	
+			 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo "<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
+				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
 			</ul>
 		</li>
-	</ul>
+	    </ul>
     </nav><br>
 
 <?php

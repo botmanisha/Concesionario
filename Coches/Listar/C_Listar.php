@@ -121,13 +121,14 @@ session_start();
         <ul>
         <li> <a href='../../Index.php'> Inicio </a> </li>
             <li> <a href='../Coches.php'> Coches </a>
-                <ul>	
-                    <li> <a href='../Añadir/CF_Añadir.php'> Añadir </a>  </li>
-                    <li> <a href='C_Listar.php'> Listar </a>  </li>
-                    <li> <a href='../Buscar/CF_Buscar.php'> Buscar </a>  </li>
-                    <li> <a href='../Modificar/CF_Modificar.php'> Modificar </a></li>
-                    <li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
-                </ul>
+            <ul>	
+                <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+				echo "<li> <a href='../Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
+				    <li> <a href='../Modificar/CF_Modificar.php'> Modificar </a>  </li>
+				    <li> <a href='../Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
+                    <li> <a href='../Listar/C_Listar.php'>        Listar    </a>  </li>
+				    <li> <a href='../Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
+		    	</ul>
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a> 		
 		</li>

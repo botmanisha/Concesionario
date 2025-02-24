@@ -110,14 +110,14 @@ session_start();
     <div class="main-content">
         <div class="form-container">
             <h2>Log in</h2>
-            <form action="check-login.php" method="post">
+            <form action="Check-Login.php" method="post">
                 <label for="username">Username:</label>
                 <input type="text" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" name="password" required>
                 <button type="submit">Log in</button>
             </form>
-            <p>¿No tienes cuenta? <a href="Registrer.html" title="Create an account">Crear una cuenta</a>.</p>
+            <p>¿No tienes cuenta? <a href="F_Registrer.php" title="Create an account">Crear una cuenta</a>.</p>
         </div>
 
         <?php
@@ -132,22 +132,23 @@ session_start();
             $user = $_POST['username'];
             $password = $_POST['password'];
 
-            $result = mysqli_query($conn, "SELECT Password, username FROM usuarios WHERE username = '$user'");
+            $result = mysqli_query($conn, "SELECT * FROM usuarios WHERE (username = '$user') and (password = '$password');");
 
             $row = mysqli_fetch_assoc($result);
 
             // Variable $hash holds the password hash from the database
-            $hash = $row['Password'];
+            $hash = $row['password'];
 
-            if ($_POST['password'] == $hash) {
+            if ($password == $hash) {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['tipo'] = $row['tipo_usuario'];
                 $_SESSION['start'] = time();
                 $_SESSION['expire'] = $_SESSION['start'] + (1 * 60);
 
                 header('Location: ../Index.php');
             } else {
-                echo "<div>¡Correo o contraseña incorrectos!<p><a href='Check-Login.html'><strong>¡Intentalo de nuevo!</strong></a></p></div>";
+                echo "<div>¡Correo o contraseña incorrectos!<p><a href='CheckLogin.php'><strong>¡Intentalo de nuevo!</strong></a></p></div>";
             }
         }
         ?>

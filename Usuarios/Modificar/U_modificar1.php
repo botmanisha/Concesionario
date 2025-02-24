@@ -126,12 +126,15 @@ body {
             </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
             <ul>	
-				<li> <a href='../Añadir/UF_Añadir.php'> Añadir </a>  </li>
-				<li> <a href='../Listar/U_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Buscar/UF_Buscar.php'> Buscar </a>  </li>
-				<li> <a href='../Modificar/UF_Modificar.php'> Modificar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>
-			</ul>	
+                <?php if ($tipo == 'Admin'){ 
+				echo "<li> <a href='../Añadir/UF_Añadir.php'>   Añadir </a>  </li>
+                    <li> <a href='..//Borrar/F_Borrar.php'>      Borrar </a>  </li>";  } ?>
+				<?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+				echo "<li> <a href='../Listar/U_Listar.php'>    Listar </a>  </li>
+				    <li> <a href='../Buscar/UF_Buscar.php'>     Buscar </a>  </li>";  } ?>
+                <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo "<li> <a href='../Modificar/UF_Modificar.php'> Modificar </a>  </li>";  } ?>
+			</ul>		
 		</li>
 		<li> <a href='../Alquileres.php'> Alquileres </a>
 		</li>

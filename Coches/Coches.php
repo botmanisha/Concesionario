@@ -119,6 +119,10 @@ if (!$conn){
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 text-align: center;
             }
+            .loginn {
+                width: 20px;
+                height: 20px;
+            }
     </style>
     <header><h1>CONCESIONARIO</h1></header>
     <h2> COCHES </h2>
@@ -127,16 +131,27 @@ if (!$conn){
         <ul>
             <li> <a href='../Index.php'> Inicio </a> </li>
             <li> <a href='Coches.php'> Coches </a>
-                <ul>	
-                    <li> <a href='./Añadir/CF_Añadir.php'> Añadir </a>  </li>
-                    <li> <a href='./Listar/C_Listar.php'> Listar </a>  </li>
-                    <li> <a href='./Buscar/CF_Buscar.php'> Buscar </a>  </li>
-                    <li> <a href='./Modificar/CF_Modificar.php'> Modificar </a></li>
-                    <li> <a href='./Borrar/F_Borrar.php'> Borrar </a>  </li>
-                </ul>
+               <ul>	
+                <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
+				echo "<li> <a href='../Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
+				    <li> <a href='../Modificar/CF_Modificar.php'> Modificar </a>  </li>
+				    <li> <a href='../Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
+                    <li> <a href='../Listar/C_Listar.php'>        Listar    </a>  </li>
+				    <li> <a href='../Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
+		    	</ul>
             </li>
 		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		</li>
 		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a></li>
+        <li> <a href="../Log/F_Registrer.php"><img  class="loginn" src="../Imagenes/login.png"></a>
+			<ul>	
+				<li> <a href='../Log/CheckLogin.php'> Log In </a>  </li>
+				<li> <a href='../Log/F_Registrer.php'> Registrarse </a>  </li>
+			</ul>
+		</li>
+		<li>  <a href='../Log/Logout.php'> <img  class="loginn" src="../Imagenes/logout.png"></a>
+            <ul>
+                <li> <a href='./Log/Logout.php'> Cerrar Sesión </a>  </li>
+            </ul>
 	</ul></nav><br>
 
 
