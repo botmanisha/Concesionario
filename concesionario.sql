@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: concesionario
+-- Host: localhost    Database: Concesionario
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	8.0.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `alquileres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `alquileres` (
   `id_alquiler` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_usuario` int(10) unsigned DEFAULT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `alquileres` (
   `prestado` datetime DEFAULT NULL,
   `devuelto` datetime DEFAULT NULL,
   PRIMARY KEY (`id_alquiler`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `alquileres` (
 
 LOCK TABLES `alquileres` WRITE;
 /*!40000 ALTER TABLE `alquileres` DISABLE KEYS */;
-INSERT INTO `alquileres` VALUES (1,3,1,'2024-11-01 10:00:00','2024-11-10 15:00:00'),(2,1,2,'2024-11-05 09:30:00','2024-11-12 18:00:00'),(3,5,3,'2024-11-15 08:45:00','2024-11-20 20:00:00'),(4,2,4,'2024-11-10 11:00:00','2024-11-17 16:30:00');
+INSERT INTO `alquileres` VALUES (1,3,1,'2024-11-01 10:00:00','2024-11-10 15:00:00'),(2,1,2,'2024-11-05 09:30:00','2024-11-12 18:00:00'),(3,5,3,'2024-11-15 08:45:00','2024-11-20 20:00:00'),(4,2,4,'2024-11-10 11:00:00','2024-11-17 16:30:00'),(6,99,10,'2025-02-24 20:49:14',NULL),(7,99,8,'2025-02-24 20:50:16',NULL);
 /*!40000 ALTER TABLE `alquileres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,17 +48,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `coches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `coches` (
   `id_coche` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `modelo` varchar(50) DEFAULT NULL,
-  `marca` varchar(50) DEFAULT NULL,
-  `color` varchar(50) DEFAULT NULL,
+  `modelo` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `marca` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `color` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `precio` float DEFAULT NULL,
   `alquilado` tinyint(1) DEFAULT NULL,
-  `foto` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`id_coche`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `foto` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Vendedor` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_coche`),
+  KEY `Vendedor` (`Vendedor`),
+  CONSTRAINT `coches_ibfk_1` FOREIGN KEY (`Vendedor`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +70,7 @@ CREATE TABLE `coches` (
 
 LOCK TABLES `coches` WRITE;
 /*!40000 ALTER TABLE `coches` DISABLE KEYS */;
-INSERT INTO `coches` VALUES (1,'Corolla','Toyota','Blanco',25000,0,'corolla.jpg'),(2,'Civic','Honda','Negro',22000,0,'civic.jpg'),(3,'Focus','Ford','Azul',21000,0,'focus.jpg'),(4,'Golf','Volkswagen','Gris',23000,0,'golf.jpg');
+INSERT INTO `coches` VALUES (1,'Corolla','Toyota','Blanco',25000,0,'corolla.jpg',1),(2,'Civic','Honda','Negro',22000,0,'civic.jpg',102),(3,'Focus','Ford','Azul',21000,0,'focus.jpg',4),(6,'Elantra','Hyundai','Blanco',23000,0,'elantra.jpg',4),(8,'Giulia','Alfa Romeo','Rojo',50000,1,'giulia.jpg',1),(9,'Golf','Volkswagen','Gris',26000,1,'golf.jpg',3),(10,'Tatra','Tatra','Rojo',40000,1,'tatra.jpg',101);
 /*!40000 ALTER TABLE `coches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,16 +80,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id_usuario` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `password` varchar(100) DEFAULT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `apellidos` varchar(50) DEFAULT NULL,
-  `dni` varchar(9) DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nombre` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `apellidos` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `dni` varchar(9) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `saldo` float DEFAULT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tipo_usuario` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +101,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'be2eb79f8a0315cb7365c66c58693fd4','D. Luffy','Luffy','12345678A',1000000),(2,'449cba9a5403d5e6ffc489f1cc48e1c2','Roronoa','Zoro','23456789B',4500),(3,'96e9c9f0d2a98d731ade73fef9cab759','Nami','Cat Burglar','34567890C',8000),(4,'fc8af4b6e66d37a59be071fa7f8d63d1','Vinsmoke','Sanji','45678901D',6000),(5,'60806e565dcaa4cedfadd7b258bf4d92','Nico','Robin','56789012E',7000);
+INSERT INTO `usuarios` VALUES (1,'123','D. Luffy','Monkey','12345678A',1000000,'luffy','luffy@gmail.com','Vendedor'),(2,'123','Roronoa','Zoro','23456789B',4500,'zoro','zoro@gmail.com','Comprador'),(3,'123','Nami','Cat Burglar','34567890C',8000,'nami','nami@gmail.com','Vendedor'),(4,'123','Vinsmoke','Sanji','45678901D',6000,'sanji','sanji@gmail.com','Vendedor'),(5,'123','Nico','Robin','56789012E',7000,'robin','robin@gmail.com','Comprador'),(99,'123','Iker','Iturbide Ramos','11111111I',9160000,'Kroni','Kroni@gmail.com','Comprador'),(100,'123','Samuel','A','000000000',111111,'admin','admin@gmail.com','Admin'),(101,'123','Álvaro','López','998899889',1000010,'loma','loma@gmail.com','Vendedor'),(102,'123','Pepe','Sanchez','39393939D',22222,'pepito','pepìto@gmail.com','Vendedor');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-18 23:51:23
+-- Dump completed on 2025-02-25  0:32:15
