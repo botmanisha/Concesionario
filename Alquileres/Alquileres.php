@@ -129,15 +129,16 @@ if (!$conn){
     <nav class="nav">
         <ul>
             <li> <a href='../Index.php'> Inicio </a> </li>
-            <li> <a href='../Coches/Coches.php'> Coches </a>
-            </li>
-		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a>	
-		</li>
-		<li> <a href='Alquileres.php'> Alquileres </a>
+            <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+			echo "  <li> <a href='../Coches/Coches.php'> Coches </a> </li>
+		    <li> <a href='../Usuarios/Usuarios.php'> Usuarios </a>	</li>
+		    <li> <a href='Alquileres.php'> Alquileres </a>";  } ?>
             <ul>	
 			 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
-				echo "<li> <a href='./Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='./Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
+				echo "<li> <a href='./Listar/A_Listar.php'> Listar </a>  </li>";  } ?>
+			
+             <?php if ($tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+			echo " <li> <a href='./Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
 			</ul>
 		</li>
         <li> <a href="../Log/F_Registrer.php"><img  class="loginn" src="../Imagenes/login.png"></a>

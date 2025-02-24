@@ -115,6 +115,10 @@ body {
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 text-align: center;
             }
+            .loginn {
+                width: 20px;
+                height: 20px;
+            }
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
@@ -122,8 +126,9 @@ body {
     <nav class="nav">
         <ul>
         <li> <a href='../../Index.php'> Inicio </a> </li>
-        <li> <a href='../../Coches/Coches.php'> Coches </a></li>
-		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>
+        <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+		echo "<li> <a href='../../Coches/Coches.php'> Coches </a></li>
+		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>";  } ?>
             <ul>	
                 <?php if ($tipo == 'Admin'){ 
 				echo "<li> <a href='../Añadir/UF_Añadir.php'>   Añadir </a>  </li>
@@ -135,7 +140,19 @@ body {
 				echo "<li> <a href='../Modificar/UF_Modificar.php'> Modificar </a>  </li>";  } ?>
 			</ul>		
         </li>
-		<li> <a href='../Alquileres.php'> Alquileres </a></li>
+		<?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+		echo "<li> <a href='../Alquileres.php'> Alquileres </a></li>";  } ?>
+        <li>  <a href="../../Log/F_Registrer.php"><img  class="loginn" src="../../Imagenes/login.png"></a>
+			<ul>	
+				<li> <a href='../../Log/CheckLogin.php'> Log In </a>  </li>
+				<li> <a href='../../Log/F_Registrer.php'> Registrarse </a>  </li>
+			</ul>
+		</li>
+        <li> <a href='../../Log/Logout.php'> <img  class="loginn" src="../../Imagenes/logout.png"></a>
+            <ul>
+                <li> <a href='../../Log/Logout.php'> Cerrar Sesión </a>  </li>
+            </ul>
+        </li>
 	</ul>
     </nav><br>
 <?php

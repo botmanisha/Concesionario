@@ -133,15 +133,16 @@ if (!$conn){
             <li> <a href='Coches.php'> Coches </a>
                <ul>	
                 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'){ 
-				echo "<li> <a href='../Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
-				    <li> <a href='../Modificar/CF_Modificar.php'> Modificar </a>  </li>
-				    <li> <a href='../Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
-                    <li> <a href='../Listar/C_Listar.php'>        Listar    </a>  </li>
-				    <li> <a href='../Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
+				echo "<li> <a href='./Añadir/CF_Añadir.php'>     Añadir    </a>  </li>
+				    <li> <a href='./Modificar/CF_Modificar.php'> Modificar </a>  </li>
+				    <li> <a href='./Borrar/F_Borrar.php'>        Borrar    </a>  </li>";  } ?>
+                    <li> <a href='./Listar/C_Listar.php'>        Listar    </a>  </li>
+				    <li> <a href='./Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
 		    	</ul>
             </li>
-		<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		</li>
-		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a></li>
+		 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin'|| $tipo == 'Comprador'){ 
+				echo "<li> <a href='../Usuarios/Usuarios.php'> Usuarios </a> 		</li>
+		<li> <a href='../Alquileres/Alquileres.php'> Alquileres </a></li>"; } ?>
         <li> <a href="../Log/F_Registrer.php"><img  class="loginn" src="../Imagenes/login.png"></a>
 			<ul>	
 				<li> <a href='../Log/CheckLogin.php'> Log In </a>  </li>

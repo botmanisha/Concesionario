@@ -113,6 +113,10 @@ session_start();
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 text-align: center;
             }
+            .loginn {
+                width: 20px;
+                height: 20px;
+            }
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
@@ -120,16 +124,28 @@ session_start();
     <nav class="nav">
         <ul>
             <li> <a href='../../Index.php'> Inicio </a> </li>
-            <li> <a href='../../Coches/Coches.php'> Coches </a>
-            </li>
+        <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo " <li> <a href='../../Coches/Coches.php'> Coches </a> </li>
 		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a></li>
-		<li> <a href='../Alquileres.php'> Alquileres </a>
+		<li> <a href='../Alquileres.php'> Alquileres </a>";  } ?>
              <ul>	
 			 <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
-				echo "<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>
-				<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
+				echo "<li> <a href='../Listar/A_Listar.php'> Listar </a>  </li>";  } ?>
+             <?php if ( $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
+				echo "<li> <a href='../Borrar/F_Borrar.php'> Borrar </a>  </li>";  } ?>
 			</ul>
 		</li>
+        <li>  <a href="../../Log/F_Registrer.php"><img  class="loginn" src="../../Imagenes/login.png"></a>
+			<ul>	
+				<li> <a href='../../Log/CheckLogin.php'> Log In </a>  </li>
+				<li> <a href='../../Log/F_Registrer.php'> Registrarse </a>  </li>
+			</ul>
+		    </li>
+            <li> <a href='../../Log/Logout.php'> <img  class="loginn" src="../../Imagenes/logout.png"></a>
+                <ul>
+                    <li> <a href='../../Log/Logout.php'> Cerrar Sesión </a>  </li>
+                </ul>
+            </li>
 	    </ul>
     </nav><br>
 
@@ -168,3 +184,5 @@ if (mysqli_num_rows($result) > 0){
 //Cerrar conexion
 mysqli_close($conn);
 ?>
+    </body>
+    </html>

@@ -132,10 +132,9 @@ session_start();
 				    <li> <a href='../Buscar/CF_Buscar.php'>       Buscar    </a>  </li>
 		    	</ul>
             </li>
-		<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	
-		</li>
-		<li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a>
-		</li>
+		<?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+			echo "<li> <a href='../../Usuarios/Usuarios.php'> Usuarios </a>	</li>
+		    <li> <a href='../../Alquileres/Alquileres.php'> Alquileres </a> </li>";  } ?>
 	</ul>
     </nav><br>
 <?php

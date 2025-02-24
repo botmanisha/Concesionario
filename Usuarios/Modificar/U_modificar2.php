@@ -115,6 +115,10 @@ body {
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 text-align: center;
             }
+            .loginn {
+                width: 20px;
+                height: 20px;
+            }
     </style>
     <body>
     <header><h1>CONCESIONARIO</h1></header>
@@ -138,6 +142,19 @@ body {
 		</li>
           <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador' ){ 
         echo "<li> <a href='../Alquileres.php'> Alquileres </a></li>";  } ?>
+        <?php if ($tipo == 'Vendedor' ||  $tipo == 'Admin' ||  $tipo == 'Comprador'){ 
+		    echo "<li> <a href='../Alquileres.php'> Alquileres </a> </li>";  } ?>
+            <li>  <a href="../../Log/F_Registrer.php"><img  class="loginn" src="../../Imagenes/login.png"></a>
+			    <ul>	
+				    <li> <a href='../../Log/CheckLogin.php'> Log In </a>  </li>
+				    <li> <a href='../../Log/F_Registrer.php'> Registrarse </a>  </li>
+			    </ul>
+		    </li>
+            <li> <a href='../../Log/Logout.php'> <img  class="loginn" src="../../Imagenes/logout.png"></a>
+                <ul>
+                    <li> <a href='../../Log/Logout.php'> Cerrar Sesión </a>  </li>
+                </ul>
+            </li>
 	</ul>
     </nav><br>
 <?php
