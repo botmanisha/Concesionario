@@ -55,9 +55,15 @@ $tipo = $_SESSION['tipo'];
    mysqli_select_db ($conexion,"concesionario")
       or die ("No se puede seleccionar la base de datos");
 // Enviar consulta
+if ($tipo == 'Admin' ){
    $instruccion = "select * from usuarios";
    $consulta = mysqli_query ($conexion,$instruccion)
-      or die ("Fallo en la consulta");
+      or die ("Fallo en la consulta");}
+elseif ($tipo == 'Vendedor'){
+    $instruccion = "select * from usuarios where tipo_usuario = 'Comprador'";
+    $consulta = mysqli_query ($conexion,$instruccion)
+       or die ("Fallo en la consulta");}
+
 // Mostrar resultados de la consulta
    $nfilas = mysqli_num_rows ($consulta);
    if ($nfilas > 0)

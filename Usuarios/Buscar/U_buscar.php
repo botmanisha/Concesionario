@@ -63,12 +63,14 @@ $tipo = $_SESSION['tipo'];
     // Verificar si se ha enviado el formulario
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $busqueda = $_POST['buscador'];
-
-        // Preparar la consulta SQL
-        $sql = "SELECT * FROM usuarios WHERE nombre LIKE '%$busqueda%' OR apellidos LIKE '%$busqueda%' OR dni LIKE '%$busqueda%' OR saldo LIKE '%$busqueda%'";
-
-        // Ejecutar la consulta
-        $resultado = mysqli_query($conn, $sql);
+        if ($tipo == 'Admin' ){
+            $sql = "SELECT * FROM usuarios WHERE nombre LIKE '%$busqueda%' OR apellidos LIKE '%$busqueda%' OR dni LIKE '%$busqueda%' OR saldo LIKE '%$busqueda%' OR username LIKE '%$busqueda%'";
+            $resultado = mysqli_query($conn, $sql)
+               or die ("Fallo en la consulta");}
+         elseif ($tipo == 'Vendedor'){
+            $sql = "SELECT * FROM usuarios WHERE (nombre LIKE '%$busqueda%' OR apellidos LIKE '%$busqueda%' OR dni LIKE '%$busqueda%' OR saldo LIKE '%$busqueda%' OR username LIKE '%$busqueda%') and (tipo_usuario = 'Comprador')";
+            $resultado = mysqli_query($conn, $sql)
+                or die ("Fallo en la consulta");}
 
         // Mostrar resultados en forma de tabla
         if (mysqli_num_rows($resultado) > 0) {

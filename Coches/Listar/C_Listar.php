@@ -94,7 +94,7 @@ $tipo = $_SESSION['tipo'];
                 if ($boo == 'No'){
                    echo " <TD> <form action='Alquiler.php' METHOD='POST'>
                         <input type='hidden' name='coche' value= ". $resultado['id_coche'] . ">             
-                        <button type='submit'>Modificar</button>
+                        <button type='submit'>Reservar</button>
                     </form> </td> ";
                 }
                 else {
